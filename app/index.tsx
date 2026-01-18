@@ -1,6 +1,6 @@
 import { Image } from "expo-image";
 import { useEffect, useState } from "react";
-import { StyleSheet } from "react-native";
+import { Button, Platform, StyleSheet } from "react-native";
 
 import { HelloWave } from "@/components/hello-wave";
 import ParallaxScrollView from "@/components/parallax-scroll-view";
@@ -10,10 +10,24 @@ import { DeviceControl } from "@/modules/expo-device-control";
 
 export default function HomeScreen() {
   const [isDeviceOwner, setIsDeviceOwner] = useState<boolean | null>(null);
+  const [installBlockResult, setInstallBlockResult] = useState<string | null>(
+    null,
+  );
 
   useEffect(() => {
     setIsDeviceOwner(DeviceControl.isDeviceOwner());
   }, []);
+
+  const onToggleInstallBlock = (blocked: boolean) => {
+    const success = DeviceControl.setInstallAppsBlocked(blocked);
+    setInstallBlockResult(
+      success
+        ? blocked
+          ? "Installations blocked."
+          : "Installations allowed."
+        : "Action failed (device owner required).",
+    );
+  };
 
   return (
     <ParallaxScrollView
@@ -38,6 +52,27 @@ export default function HomeScreen() {
               ? "This app is Device Owner."
               : "Not set as Device Owner."}
         </ThemedText>
+      </ThemedView>
+      <ThemedView style={styles.stepContainer}>
+        <ThemedText type="subtitle">Control App Installations</ThemedText>
+        <ThemedText>
+          {Platform.OS === "android"
+            ? "Block or allow installing other apps (requires Device Owner)."
+            : "Android-only feature."}
+        </ThemedText>
+        {Platform.OS === "android" && (
+          <>
+            <Button
+              title="Block installs"
+              onPress={() => onToggleInstallBlock(true)}
+            />
+            <Button
+              title="Allow installs"
+              onPress={() => onToggleInstallBlock(false)}
+            />
+            {installBlockResult && <ThemedText>{installBlockResult}</ThemedText>}
+          </>
+        )}
       </ThemedView>
     </ParallaxScrollView>
   );

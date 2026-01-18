@@ -7,6 +7,10 @@ class DeviceControlModule extends NativeModule {
   isDeviceOwner(): boolean {
     return false;
   }
+
+  setInstallAppsBlocked(): boolean {
+    return false;
+  }
 }
 
 export default registerWebModule(DeviceControlModule);
