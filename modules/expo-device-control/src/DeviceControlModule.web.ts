@@ -11,6 +11,14 @@ class DeviceControlModule extends NativeModule {
   setInstallAppsBlocked(): boolean {
     return false;
   }
+
+  enableKioskMode(): void {
+    throw new Error('Kiosk mode is only available on Android.');
+  }
+
+  disableKioskMode(): void {
+    // no-op
+  }
 }
 
 export default registerWebModule(DeviceControlModule);

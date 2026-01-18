@@ -39,5 +39,26 @@ class DeviceControlModule : Module() {
         false
       }
     }
+
+    Function("enableKioskMode") {
+      val ctx = appContext.reactContext
+        ?: throw IllegalStateException("React context unavailable; cannot enable kiosk mode.")
+      val activity = appContext.currentActivity
+        ?: throw IllegalStateException("Current activity unavailable; cannot start lock task mode.")
+      val dpm = ctx.getSystemService(Context.DEVICE_POLICY_SERVICE) as DevicePolicyManager
+      if (!dpm.isDeviceOwnerApp(ctx.packageName)) {
+        throw SecurityException("App must be device owner to enable kiosk mode.")
+      }
+
+      val admin = ComponentName(ctx, DeviceControlAdminReceiver::class.java)
+      dpm.setLockTaskPackages(admin, arrayOf(ctx.packageName))
+      activity.startLockTask()
+    }
+
+    Function("disableKioskMode") {
+      val activity = appContext.currentActivity
+        ?: throw IllegalStateException("Current activity unavailable; cannot stop lock task mode.")
+      activity.stopLockTask()
+    }
   }
 }

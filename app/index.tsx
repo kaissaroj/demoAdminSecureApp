@@ -13,6 +13,7 @@ export default function HomeScreen() {
   const [installBlockResult, setInstallBlockResult] = useState<string | null>(
     null,
   );
+  const [kioskMessage, setKioskMessage] = useState<string | null>(null);
 
   useEffect(() => {
     setIsDeviceOwner(DeviceControl.isDeviceOwner());
@@ -27,6 +28,26 @@ export default function HomeScreen() {
           : "Installations allowed."
         : "Action failed (device owner required).",
     );
+  };
+
+  const onEnableKiosk = () => {
+    try {
+      DeviceControl.enableKioskMode();
+      setKioskMessage("Kiosk mode enabled.");
+    } catch (error: unknown) {
+      const err = error instanceof Error ? error.message : "Failed to enable kiosk mode.";
+      setKioskMessage(err);
+    }
+  };
+
+  const onDisableKiosk = () => {
+    try {
+      DeviceControl.disableKioskMode();
+      setKioskMessage("Kiosk mode disabled.");
+    } catch (error: unknown) {
+      const err = error instanceof Error ? error.message : "Failed to disable kiosk mode.";
+      setKioskMessage(err);
+    }
   };
 
   return (
@@ -71,6 +92,21 @@ export default function HomeScreen() {
               onPress={() => onToggleInstallBlock(false)}
             />
             {installBlockResult && <ThemedText>{installBlockResult}</ThemedText>}
+          </>
+        )}
+      </ThemedView>
+      <ThemedView style={styles.stepContainer}>
+        <ThemedText type="subtitle">Single-App Kiosk</ThemedText>
+        <ThemedText>
+          {Platform.OS === "android"
+            ? "Lock or unlock this app as the only allowed task (Device Owner required)."
+            : "Android-only feature."}
+        </ThemedText>
+        {Platform.OS === "android" && (
+          <>
+            <Button title="Enable kiosk mode" onPress={onEnableKiosk} />
+            <Button title="Disable kiosk mode" onPress={onDisableKiosk} />
+            {kioskMessage && <ThemedText>{kioskMessage}</ThemedText>}
           </>
         )}
       </ThemedView>
