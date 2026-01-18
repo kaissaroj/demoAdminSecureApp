@@ -1,0 +1,2 @@
+expo.modules.devicecontrol
+xml device_admin_receiver

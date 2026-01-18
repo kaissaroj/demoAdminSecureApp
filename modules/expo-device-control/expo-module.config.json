@@ -1,0 +1,12 @@
+{
+  "platforms": ["apple", "android", "web"],
+  "apple": {
+    "modules": ["ExpoDeviceControlModule"]
+  },
+  "android": {
+    "modules": [
+      "expo.modules.devicecontrol.ExpoDeviceControlModule",
+      "expo.modules.devicecontrol.DeviceControlModule"
+    ]
+  }
+}

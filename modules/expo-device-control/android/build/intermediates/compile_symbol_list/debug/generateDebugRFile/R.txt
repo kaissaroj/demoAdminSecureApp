@@ -1,0 +1,1 @@
+int xml device_admin_receiver 0x0
