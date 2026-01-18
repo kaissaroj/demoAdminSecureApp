@@ -4,30 +4,37 @@
 4
 5    <uses-sdk android:minSdkVersion="24" />
 6
-7    <application>
-7-->/Users/saroj/Projects/Personal/demoSecure/modules/expo-device-control/android/src/main/AndroidManifest.xml:2:3-14:17
-8        <receiver
-8-->/Users/saroj/Projects/Personal/demoSecure/modules/expo-device-control/android/src/main/AndroidManifest.xml:3:5-13:16
-9            android:name="expo.modules.devicecontrol.DeviceControlAdminReceiver"
-9-->/Users/saroj/Projects/Personal/demoSecure/modules/expo-device-control/android/src/main/AndroidManifest.xml:4:7-75
-10            android:exported="true"
-10-->/Users/saroj/Projects/Personal/demoSecure/modules/expo-device-control/android/src/main/AndroidManifest.xml:6:7-30
-11            android:permission="android.permission.BIND_DEVICE_ADMIN" >
-11-->/Users/saroj/Projects/Personal/demoSecure/modules/expo-device-control/android/src/main/AndroidManifest.xml:5:7-64
-12            <meta-data
-12-->/Users/saroj/Projects/Personal/demoSecure/modules/expo-device-control/android/src/main/AndroidManifest.xml:7:7-9:57
-13                android:name="android.app.device_admin"
-13-->/Users/saroj/Projects/Personal/demoSecure/modules/expo-device-control/android/src/main/AndroidManifest.xml:8:9-48
-14                android:resource="@xml/device_admin_receiver" />
-14-->/Users/saroj/Projects/Personal/demoSecure/modules/expo-device-control/android/src/main/AndroidManifest.xml:9:9-54
-15
-16            <intent-filter>
-16-->/Users/saroj/Projects/Personal/demoSecure/modules/expo-device-control/android/src/main/AndroidManifest.xml:10:7-12:23
-17                <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
-17-->/Users/saroj/Projects/Personal/demoSecure/modules/expo-device-control/android/src/main/AndroidManifest.xml:11:9-74
-17-->/Users/saroj/Projects/Personal/demoSecure/modules/expo-device-control/android/src/main/AndroidManifest.xml:11:17-71
-18            </intent-filter>
-19        </receiver>
-20    </application>
-21
-22</manifest>
+7    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+7-->/Users/saroj/Projects/Personal/demoSecure/modules/expo-device-control/android/src/main/AndroidManifest.xml:2:3-74
+7-->/Users/saroj/Projects/Personal/demoSecure/modules/expo-device-control/android/src/main/AndroidManifest.xml:2:20-71
+8    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+8-->/Users/saroj/Projects/Personal/demoSecure/modules/expo-device-control/android/src/main/AndroidManifest.xml:3:3-77
+8-->/Users/saroj/Projects/Personal/demoSecure/modules/expo-device-control/android/src/main/AndroidManifest.xml:3:20-74
+9
+10    <application>
+10-->/Users/saroj/Projects/Personal/demoSecure/modules/expo-device-control/android/src/main/AndroidManifest.xml:4:3-16:17
+11        <receiver
+11-->/Users/saroj/Projects/Personal/demoSecure/modules/expo-device-control/android/src/main/AndroidManifest.xml:5:5-15:16
+12            android:name="expo.modules.devicecontrol.DeviceControlAdminReceiver"
+12-->/Users/saroj/Projects/Personal/demoSecure/modules/expo-device-control/android/src/main/AndroidManifest.xml:6:7-75
+13            android:exported="true"
+13-->/Users/saroj/Projects/Personal/demoSecure/modules/expo-device-control/android/src/main/AndroidManifest.xml:8:7-30
+14            android:permission="android.permission.BIND_DEVICE_ADMIN" >
+14-->/Users/saroj/Projects/Personal/demoSecure/modules/expo-device-control/android/src/main/AndroidManifest.xml:7:7-64
+15            <meta-data
+15-->/Users/saroj/Projects/Personal/demoSecure/modules/expo-device-control/android/src/main/AndroidManifest.xml:9:7-11:57
+16                android:name="android.app.device_admin"
+16-->/Users/saroj/Projects/Personal/demoSecure/modules/expo-device-control/android/src/main/AndroidManifest.xml:10:9-48
+17                android:resource="@xml/device_admin_receiver" />
+17-->/Users/saroj/Projects/Personal/demoSecure/modules/expo-device-control/android/src/main/AndroidManifest.xml:11:9-54
+18
+19            <intent-filter>
+19-->/Users/saroj/Projects/Personal/demoSecure/modules/expo-device-control/android/src/main/AndroidManifest.xml:12:7-14:23
+20                <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
+20-->/Users/saroj/Projects/Personal/demoSecure/modules/expo-device-control/android/src/main/AndroidManifest.xml:13:9-74
+20-->/Users/saroj/Projects/Personal/demoSecure/modules/expo-device-control/android/src/main/AndroidManifest.xml:13:17-71
+21            </intent-filter>
+22        </receiver>
+23    </application>
+24
+25</manifest>

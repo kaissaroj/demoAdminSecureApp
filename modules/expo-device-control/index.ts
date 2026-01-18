@@ -3,4 +3,5 @@
 export { default } from './src/ExpoDeviceControlModule';
 export { default as ExpoDeviceControlView } from './src/ExpoDeviceControlView';
 export { default as DeviceControl } from './src/DeviceControlModule';
+export type { DeviceInfo } from './src/DeviceControlModule';
 export * from './src/ExpoDeviceControl.types';

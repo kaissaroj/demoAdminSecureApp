@@ -1,33 +1,41 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/saroj/Projects/Personal/demoSecure/modules/expo-device-control/android/src/main/AndroidManifest.xml:1:1-15:12
-INJECTED from /Users/saroj/Projects/Personal/demoSecure/modules/expo-device-control/android/src/main/AndroidManifest.xml:1:1-15:12
+ADDED from /Users/saroj/Projects/Personal/demoSecure/modules/expo-device-control/android/src/main/AndroidManifest.xml:1:1-17:12
+INJECTED from /Users/saroj/Projects/Personal/demoSecure/modules/expo-device-control/android/src/main/AndroidManifest.xml:1:1-17:12
 	package
 		INJECTED from /Users/saroj/Projects/Personal/demoSecure/modules/expo-device-control/android/src/main/AndroidManifest.xml
 	xmlns:android
 		ADDED from /Users/saroj/Projects/Personal/demoSecure/modules/expo-device-control/android/src/main/AndroidManifest.xml:1:11-69
+uses-permission#android.permission.ACCESS_WIFI_STATE
+ADDED from /Users/saroj/Projects/Personal/demoSecure/modules/expo-device-control/android/src/main/AndroidManifest.xml:2:3-74
+	android:name
+		ADDED from /Users/saroj/Projects/Personal/demoSecure/modules/expo-device-control/android/src/main/AndroidManifest.xml:2:20-71
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from /Users/saroj/Projects/Personal/demoSecure/modules/expo-device-control/android/src/main/AndroidManifest.xml:3:3-77
+	android:name
+		ADDED from /Users/saroj/Projects/Personal/demoSecure/modules/expo-device-control/android/src/main/AndroidManifest.xml:3:20-74
 application
-ADDED from /Users/saroj/Projects/Personal/demoSecure/modules/expo-device-control/android/src/main/AndroidManifest.xml:2:3-14:17
+ADDED from /Users/saroj/Projects/Personal/demoSecure/modules/expo-device-control/android/src/main/AndroidManifest.xml:4:3-16:17
 receiver#expo.modules.devicecontrol.DeviceControlAdminReceiver
-ADDED from /Users/saroj/Projects/Personal/demoSecure/modules/expo-device-control/android/src/main/AndroidManifest.xml:3:5-13:16
+ADDED from /Users/saroj/Projects/Personal/demoSecure/modules/expo-device-control/android/src/main/AndroidManifest.xml:5:5-15:16
 	android:exported
-		ADDED from /Users/saroj/Projects/Personal/demoSecure/modules/expo-device-control/android/src/main/AndroidManifest.xml:6:7-30
+		ADDED from /Users/saroj/Projects/Personal/demoSecure/modules/expo-device-control/android/src/main/AndroidManifest.xml:8:7-30
 	android:permission
-		ADDED from /Users/saroj/Projects/Personal/demoSecure/modules/expo-device-control/android/src/main/AndroidManifest.xml:5:7-64
+		ADDED from /Users/saroj/Projects/Personal/demoSecure/modules/expo-device-control/android/src/main/AndroidManifest.xml:7:7-64
 	android:name
-		ADDED from /Users/saroj/Projects/Personal/demoSecure/modules/expo-device-control/android/src/main/AndroidManifest.xml:4:7-75
+		ADDED from /Users/saroj/Projects/Personal/demoSecure/modules/expo-device-control/android/src/main/AndroidManifest.xml:6:7-75
 meta-data#android.app.device_admin
-ADDED from /Users/saroj/Projects/Personal/demoSecure/modules/expo-device-control/android/src/main/AndroidManifest.xml:7:7-9:57
+ADDED from /Users/saroj/Projects/Personal/demoSecure/modules/expo-device-control/android/src/main/AndroidManifest.xml:9:7-11:57
 	android:resource
-		ADDED from /Users/saroj/Projects/Personal/demoSecure/modules/expo-device-control/android/src/main/AndroidManifest.xml:9:9-54
+		ADDED from /Users/saroj/Projects/Personal/demoSecure/modules/expo-device-control/android/src/main/AndroidManifest.xml:11:9-54
 	android:name
-		ADDED from /Users/saroj/Projects/Personal/demoSecure/modules/expo-device-control/android/src/main/AndroidManifest.xml:8:9-48
+		ADDED from /Users/saroj/Projects/Personal/demoSecure/modules/expo-device-control/android/src/main/AndroidManifest.xml:10:9-48
 intent-filter#action:name:android.app.action.DEVICE_ADMIN_ENABLED
-ADDED from /Users/saroj/Projects/Personal/demoSecure/modules/expo-device-control/android/src/main/AndroidManifest.xml:10:7-12:23
+ADDED from /Users/saroj/Projects/Personal/demoSecure/modules/expo-device-control/android/src/main/AndroidManifest.xml:12:7-14:23
 action#android.app.action.DEVICE_ADMIN_ENABLED
-ADDED from /Users/saroj/Projects/Personal/demoSecure/modules/expo-device-control/android/src/main/AndroidManifest.xml:11:9-74
+ADDED from /Users/saroj/Projects/Personal/demoSecure/modules/expo-device-control/android/src/main/AndroidManifest.xml:13:9-74
 	android:name
-		ADDED from /Users/saroj/Projects/Personal/demoSecure/modules/expo-device-control/android/src/main/AndroidManifest.xml:11:17-71
+		ADDED from /Users/saroj/Projects/Personal/demoSecure/modules/expo-device-control/android/src/main/AndroidManifest.xml:13:17-71
 uses-sdk
 INJECTED from /Users/saroj/Projects/Personal/demoSecure/modules/expo-device-control/android/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /Users/saroj/Projects/Personal/demoSecure/modules/expo-device-control/android/src/main/AndroidManifest.xml

@@ -1,6 +1,6 @@
 import { Image } from "expo-image";
 import { useEffect, useState } from "react";
-import { Button, Platform, StyleSheet } from "react-native";
+import { Button, Platform, ScrollView, StyleSheet } from "react-native";
 
 import { HelloWave } from "@/components/hello-wave";
 import ParallaxScrollView from "@/components/parallax-scroll-view";
@@ -14,6 +14,9 @@ export default function HomeScreen() {
     null,
   );
   const [kioskMessage, setKioskMessage] = useState<string | null>(null);
+  const [deviceInfo, setDeviceInfo] = useState<Record<string, unknown> | null>(
+    null,
+  );
 
   useEffect(() => {
     setIsDeviceOwner(DeviceControl.isDeviceOwner());
@@ -35,7 +38,8 @@ export default function HomeScreen() {
       DeviceControl.enableKioskMode();
       setKioskMessage("Kiosk mode enabled.");
     } catch (error: unknown) {
-      const err = error instanceof Error ? error.message : "Failed to enable kiosk mode.";
+      const err =
+        error instanceof Error ? error.message : "Failed to enable kiosk mode.";
       setKioskMessage(err);
     }
   };
@@ -45,8 +49,27 @@ export default function HomeScreen() {
       DeviceControl.disableKioskMode();
       setKioskMessage("Kiosk mode disabled.");
     } catch (error: unknown) {
-      const err = error instanceof Error ? error.message : "Failed to disable kiosk mode.";
+      const err =
+        error instanceof Error
+          ? error.message
+          : "Failed to disable kiosk mode.";
       setKioskMessage(err);
+    }
+  };
+
+  const onFetchDeviceInfo = () => {
+    if (Platform.OS !== "android") {
+      setDeviceInfo({ error: "Device info is Android-only." });
+      return;
+    }
+
+    try {
+      const info = DeviceControl.getDeviceInfo();
+      setDeviceInfo(info);
+    } catch (error: unknown) {
+      const err =
+        error instanceof Error ? error.message : "Failed to fetch device info.";
+      setDeviceInfo({ error: err });
     }
   };
 
@@ -70,8 +93,8 @@ export default function HomeScreen() {
           {isDeviceOwner === null
             ? "Checking..."
             : isDeviceOwner
-              ? "This app is Device Owner."
-              : "Not set as Device Owner."}
+            ? "This app is Device Owner."
+            : "Not set as Device Owner."}
         </ThemedText>
       </ThemedView>
       <ThemedView style={styles.stepContainer}>
@@ -91,7 +114,9 @@ export default function HomeScreen() {
               title="Allow installs"
               onPress={() => onToggleInstallBlock(false)}
             />
-            {installBlockResult && <ThemedText>{installBlockResult}</ThemedText>}
+            {installBlockResult && (
+              <ThemedText>{installBlockResult}</ThemedText>
+            )}
           </>
         )}
       </ThemedView>
@@ -110,6 +135,25 @@ export default function HomeScreen() {
           </>
         )}
       </ThemedView>
+      <ThemedView style={styles.stepContainer}>
+        <ThemedText type="subtitle">Device Info</ThemedText>
+        <ThemedText>
+          {Platform.OS === "android"
+            ? "Get comprehensive device info."
+            : "Android-only feature."}
+        </ThemedText>
+        <Button title="Get device info" onPress={onFetchDeviceInfo} />
+        {deviceInfo && (
+          <ScrollView
+            style={styles.deviceInfoContainer}
+            contentContainerStyle={styles.deviceInfoContent}
+          >
+            {Object.entries(deviceInfo).map(([key, value]) => (
+              <ThemedText key={key}>{`${key}: ${String(value)}`}</ThemedText>
+            ))}
+          </ScrollView>
+        )}
+      </ThemedView>
     </ParallaxScrollView>
   );
 }
@@ -123,6 +167,17 @@ const styles = StyleSheet.create({
   stepContainer: {
     gap: 8,
     marginBottom: 8,
+  },
+  deviceInfoContainer: {
+    maxHeight: 340,
+    borderWidth: 1,
+    borderColor: "#ccc",
+    borderRadius: 8,
+    padding: 8,
+  },
+  deviceInfoContent: {
+    gap: 4,
+    paddingBottom: 8,
   },
   reactLogo: {
     height: 178,
